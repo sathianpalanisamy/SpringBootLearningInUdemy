@@ -2,16 +2,26 @@ package com.in28minutes.rest.webservices.restfulwebservices.user;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+@Entity
 public class User {
 
+	@GeneratedValue
+	@Id
 	private Integer id;
 	@Size(min = 2, message = "name should have atleast 2 chars")
 	private String name;
 	@Past
 	private Date dateOfBirth;
+	
+	public User() {
+		super();
+	}
 
 	public User(Integer id, String name, Date dateOfBirth) {
 		super();
