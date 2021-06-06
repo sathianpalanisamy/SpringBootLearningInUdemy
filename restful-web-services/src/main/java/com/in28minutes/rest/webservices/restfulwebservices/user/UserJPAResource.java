@@ -23,7 +23,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 public class UserJPAResource {
-	
+
 	@Autowired
 	private UserRepository userRpositary;
 
@@ -39,9 +39,9 @@ public class UserJPAResource {
 		if (!user.isPresent()) {
 			throw new UserNotFoundException("id : " + id);
 		}
-		
-		EntityModel<User> entityModel=EntityModel.of(user.get());
-		Link builder=linkTo(methodOn(this.getClass()).retrieveAllUser()).withRel("all-users");
+
+		EntityModel<User> entityModel = EntityModel.of(user.get());
+		Link builder = linkTo(methodOn(this.getClass()).retrieveAllUser()).withRel("all-users");
 		entityModel.add(builder);
 		return entityModel;
 
@@ -61,6 +61,17 @@ public class UserJPAResource {
 	@DeleteMapping("/jpa/users/{id}")
 	public void deleteUserById(@PathVariable int id) {
 		userRpositary.deleteById(id);
+
+	}
+
+	@GetMapping("/jpa/users/{id}/posts")
+	public List<Post> retrievePostsforaUser(@PathVariable int id) {
+		Optional<User> user = userRpositary.findById(id);
+		if (!user.isPresent()) {
+			throw new UserNotFoundException("id : " + id);
+		}
+
+		return user.get().getPosts();
 
 	}
 
