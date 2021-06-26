@@ -8,6 +8,7 @@ public class CurrencyExchange {
 	private String from;
 	private String to;
 	private BigDecimal convertionMultipleReates;
+	private String environment;
 
 	public CurrencyExchange(Long id, String from, String to, BigDecimal convertionMultipleReates) {
 		super();
@@ -47,6 +48,14 @@ public class CurrencyExchange {
 
 	public void setConvertionMultipleReates(BigDecimal convertionMultipleReates) {
 		this.convertionMultipleReates = convertionMultipleReates;
+	}
+
+	public String getEnvironment() {
+		return environment;
+	}
+
+	public void setEnvironment(String environment) {
+		this.environment = environment;
 	}
 
 }
