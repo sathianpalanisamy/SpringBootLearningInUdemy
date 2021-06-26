@@ -18,6 +18,10 @@ public class CurrencyExchange {
 	private BigDecimal convertionMultipleRates;
 	private String environment;
 
+	public CurrencyExchange() {
+		super();
+	}
+
 	public CurrencyExchange(Long id, String from, String to, BigDecimal convertionMultipleReates) {
 		super();
 		this.id = id;
